@@ -2,18 +2,12 @@ package egovframework.com.cmm.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 
 import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.service.CmmnDetailCode;
-import god.com.cmm.service.impl.GodComAbstractTest;
 
-public class CmmUseDAOSelectGroupIdDetailTest extends GodComAbstractTest {
-
-	@Resource(name = "cmmUseDAO")
-	private CmmUseDAO cmmUseDAO;
+public class CmmUseDAOSelectGroupIdDetailTest extends CmmUseDAOTest {
 
 	@Test
 	public void test() throws Exception {
@@ -21,7 +15,10 @@ public class CmmUseDAOSelectGroupIdDetailTest extends GodComAbstractTest {
 
 		ComDefaultCodeVO vo = new ComDefaultCodeVO();
 		vo.setHaveDetailCondition("Y");
-		vo.setCodeId("GROUP_00000000000000");
+		vo.setDetailCondition("GROUP_00000000000000");
+		// vo.setDetailCondition("GROUP_00000000000000%");
+		// vo.setDetailCondition("%GROUP_00000000000000");
+		// vo.setDetailCondition("%GROUP_00000000000000%");
 
 		List<CmmnDetailCode> results = cmmUseDAO.selectGroupIdDetail(vo);
 

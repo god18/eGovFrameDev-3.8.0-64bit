@@ -10,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = { "classpath*:egovframework/spring/com/**/context-*.xml" })
 
-// @ActiveProfiles({ "mysql", "dummy" })
-@ActiveProfiles({ "maria", "dummy" })
+@ActiveProfiles({ "mysql", "dummy" })
+// @ActiveProfiles({ "maria", "dummy" })
 // VM arguments:
 // -Dspring.profiles.active=mysql,dummy
 // -Dspring.profiles.active=maria,dummy

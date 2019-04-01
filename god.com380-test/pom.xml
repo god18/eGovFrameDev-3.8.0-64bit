@@ -118,6 +118,30 @@
 			<artifactId>ojdbc</artifactId> <version>14</version> <scope>system</scope> 
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc-14.jar</systemPath> 
 			</dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.16.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>god</groupId>
+			<artifactId>com380</artifactId>
+			<version>1.0.0</version>
+			<classifier>classes</classifier>
+		</dependency>
+
 	</dependencies>
 
 	<build>

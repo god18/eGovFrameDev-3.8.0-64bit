@@ -10,7 +10,7 @@ import egovframework.com.cmm.ComDefaultCodeVO;
 import egovframework.com.cmm.service.CmmnDetailCode;
 import god.com.cmm.service.impl.GodComAbstractTest;
 
-public class CmmUseDAOSelectOgrnztIdDetailTest extends GodComAbstractTest {
+public class CmmUseDAOSelectGroupIdDetailTest extends GodComAbstractTest {
 
 	@Resource(name = "cmmUseDAO")
 	private CmmUseDAO cmmUseDAO;
@@ -21,9 +21,9 @@ public class CmmUseDAOSelectOgrnztIdDetailTest extends GodComAbstractTest {
 
 		ComDefaultCodeVO vo = new ComDefaultCodeVO();
 		vo.setHaveDetailCondition("Y");
-		vo.setDetailCondition("ORGNZT_0000000000000-");
+		vo.setCodeId("GROUP_00000000000000");
 
-		List<CmmnDetailCode> results = cmmUseDAO.selectOgrnztIdDetail(vo);
+		List<CmmnDetailCode> results = cmmUseDAO.selectGroupIdDetail(vo);
 
 		egovLogger.debug("results: {}", results);
 

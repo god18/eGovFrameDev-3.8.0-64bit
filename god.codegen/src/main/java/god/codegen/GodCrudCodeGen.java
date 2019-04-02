@@ -21,6 +21,8 @@ public class GodCrudCodeGen {
 		GodCrudCodeGen main = new GodCrudCodeGen();
 		DataModelContext dataModel = main.a();
 		main.b(dataModel);
+
+		main.c();
 	}
 
 	private DataModelContext a() {
@@ -79,10 +81,18 @@ public class GodCrudCodeGen {
 			System.err.println(result);
 		}
 
-		File file = new File(SystemUtils.USER_HOME + "/Desktop/" + dataModel.getEntity().getUcName() + ".sql");
+		File file = new File(SystemUtils.USER_HOME + "/Desktop/test/" + dataModel.getEntity().getUcName() + ".sql");
 		String data = result;
 		Charset encoding = StandardCharsets.UTF_8;
 		writeStringToFile(file, data, encoding);
+	}
+
+	private void c() {
+		GodExcel godExcel = new GodExcel();
+		List<DataModelContext> dataModels = godExcel.a();
+		for (DataModelContext dataModel : dataModels) {
+			b(dataModel);
+		}
 	}
 
 	private void writeStringToFile(File file, String data, Charset encoding) {

@@ -56,6 +56,8 @@ public class DataModelContext {
 
 	private String packageName;
 
+	private GodTable godTable;
+
 	/**
 	 * 데이타베이스 제품명
 	 * 
@@ -176,6 +178,14 @@ public class DataModelContext {
 
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
+	}
+
+	public GodTable getGodTable() {
+		return godTable;
+	}
+
+	public void setGodTable(GodTable godTable) {
+		this.godTable = godTable;
 	}
 
 }

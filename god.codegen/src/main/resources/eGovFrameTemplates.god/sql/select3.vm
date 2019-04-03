@@ -1,0 +1,54 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($searchVOAlias="${model.entity.ccName}SerarchVO")
+#set($daoPackage="${daoPackage}")
+#set($daoClassName="${model.entity.pcName}DAO")
+#set($daoName="${model.entity.ccName}DAO")
+#set($daoInstanceName="${model.entity.ccName}DAO")
+##
+##
+#set($vender="$model.vender")
+#set($namespace="$model.entity.pcName")
+#set($resultMapId="${model.entity.ccName}")
+#set($resultMapClass="${voPackage}.${voClassName}")
+##
+##
+#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}_S")
+#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}_S")
+#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}_S")
+#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}_S")
+#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List_D")
+#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt_S")
+##
+##
+#if($vender == "HSQLDB")
+SELECT COUNT(*) totcnt
+FROM ${model.entity.name}
+WHERE 1=1
+<isEqual prepend="AND" property="searchCondition" compareValue="0">
+	${model.attributes.get(0).name} = #searchKeyword#
+</isEqual>
+<isEqual prepend="AND" property="searchCondition" compareValue="1">
+	${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+</isEqual>
+#elseif($vender == "Oracle")
+SELECT COUNT(*) totcnt
+FROM ${model.entity.name}
+WHERE 1=1
+<isEqual prepend="AND" property="searchCondition" compareValue="0">
+	${model.attributes.get(0).name} = #searchKeyword#
+</isEqual>
+<isEqual prepend="AND" property="searchCondition" compareValue="1">
+	${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+</isEqual>
+#elseif($vender == "MySql")
+SELECT COUNT(*) totcnt
+FROM ${model.entity.name}
+WHERE 1=1
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+	AND ${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
+#else
+
+#end

@@ -104,7 +104,8 @@ public class Excel {
 			if (b.equals(dataModel.getGodTable().getTableSchema())
 					&& c.equals(dataModel.getGodTable().getTableName())) {
 				Attribute attr = new Attribute(d);
-				attr.setJavaType("String");
+				attr.setType(h);
+				attr.setJavaType(getJavaType(h));
 				attributes.add(attr);
 				primaryKeys.add(attr);
 			}
@@ -112,6 +113,16 @@ public class Excel {
 
 		dataModel.setAttributes(attributes);
 		dataModel.setPrimaryKeys(primaryKeys);
+	}
+
+	private String getJavaType(String type) {
+		String javaType = "String";
+		if ("bigint".equals(type)) {
+			javaType = "Long";
+		} else if ("datetime".equals(type)) {
+			javaType = "Date";
+		}
+		return javaType;
 	}
 
 }

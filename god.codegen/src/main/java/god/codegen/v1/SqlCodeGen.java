@@ -21,10 +21,16 @@ public class SqlCodeGen {
 		CodeGenVO vo = new CodeGenVO();
 		CodeGenModel model = new CodeGenModel();
 
+		// vo.setTemplateNameTables(
+		// "C:\\Users\\godsoft\\Google
+		// 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
+		// vo.setTemplateNameColumns(
+		// "C:\\Users\\godsoft\\Google
+		// 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
 		vo.setTemplateNameTables(
-				"C:\\Users\\godsoft\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
+				"D:\\Users\\LeeBaekHaeng\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
 		vo.setTemplateNameColumns(
-				"C:\\Users\\godsoft\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
+				"D:\\Users\\LeeBaekHaeng\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
 
 		DataModelContext dataModel = new DataModelContext();
 		dataModel.setPackageName("god.com");

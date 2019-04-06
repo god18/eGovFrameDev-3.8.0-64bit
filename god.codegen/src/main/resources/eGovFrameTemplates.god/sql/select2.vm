@@ -1,3 +1,6 @@
+/*
+god
+*/
 ##
 #set($voPackage="${voPackage}")
 #set($voClassName="${model.entity.pcName}VO")
@@ -25,7 +28,7 @@
 ##
 #if($vender == "HSQLDB")
 SELECT
-	#set($i=0)	
+	#set($i=0)
 	#foreach($attribute in $model.attributes)
 	#if($i == 0)
 		${attribute.name}
@@ -46,7 +49,7 @@ WHERE 1=1
 #if(!${model.primaryKeys} == [])
                 ${model.attributes.get(0).name} DESC
 #else 	
-	#set($i=0)	
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 	${attribute.name} DESC
@@ -81,8 +84,8 @@ SELECT * FROM (
 		ORDER BY 
 #if(!${model.primaryKeys} == [])
                 ${model.attributes.get(0).name} DESC
-#else		
-	#set($i=0)	
+#else
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 	${attribute.name} DESC
@@ -93,40 +96,41 @@ SELECT * FROM (
 	#end
 #end
 
-		<![CDATA[		
+		<![CDATA[
 	) A WHERE ROWNUM <= #lastIndex#
 )WHERE RNUM > #firstIndex#
 ]]>
 #elseif($vender == "MySql")
 SELECT
-	#set($i=0)	
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
-		${attribute.name}
-	#else
-		, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
-FROM ${model.entity.name}
-WHERE 1=1
-	AND ${model.attributes.get(0).name} = #searchKeyword#
-	AND ${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
-	ORDER BY 
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
-#else	
-	#set($i=0)	
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-	${attribute.name} DESC
-	#else
-	, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+	${attribute.name}
+#else
+	, ${attribute.name}
 #end
-limit #firstIndex#, #recordCountPerPage#	
+#set($i=$i+1)
+#end
+FROM ${model.entity.name}
+WHERE 1 = 1
+	AND ${model.attributes.get(0).name} = '#searchKeyword#'
+	AND ${model.attributes.get(1).name} LIKE CONCAT('%', '#searchKeyword#', '%')
+ORDER BY 
+#if(!${model.primaryKeys} == [])
+	${model.attributes.get(0).name} DESC
+#else	
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+	${attribute.name} DESC
+#else
+	, ${attribute.name} DESC
+#end
+#set($i=$i+1)
+#end
+#end
+limit '#firstIndex#', '#recordCountPerPage#'
 #else
 
 #end
+;

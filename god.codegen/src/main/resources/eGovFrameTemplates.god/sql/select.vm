@@ -1,5 +1,8 @@
+/*
+god
+*/
 SELECT
-#set($i=0)	
+#set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
 	${attribute.name}
@@ -10,15 +13,16 @@ SELECT
 #end	
 FROM ${model.entity.name}
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+WHERE ${model.attributes.get(0).name} = '#${model.attributes.get(0).ccName}#'
 #else 
-	#set($i=0)	
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-	WHERE ${attribute.name}=#${attribute.ccName}#
-	#else
-		AND ${attribute.name}=#${attribute.ccName}#
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE ${attribute.name} = '#${attribute.ccName}#'
+#else
+	AND ${attribute.name} = '#${attribute.ccName}#'
 #end
+#set($i=$i+1)
+#end
+#end
+;

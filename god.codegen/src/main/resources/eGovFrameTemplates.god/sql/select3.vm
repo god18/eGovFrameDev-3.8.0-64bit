@@ -1,3 +1,6 @@
+/*
+god
+*/
 ##
 #set($voPackage="${voPackage}")
 #set($voClassName="${model.entity.pcName}VO")
@@ -46,9 +49,10 @@ WHERE 1=1
 #elseif($vender == "MySql")
 SELECT COUNT(*) totcnt
 FROM ${model.entity.name}
-WHERE 1=1
-	AND ${model.attributes.get(0).name} = #searchKeyword#
-	AND ${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
+WHERE 1 = 1
+	AND ${model.attributes.get(0).name} = '#searchKeyword#'
+	AND ${model.attributes.get(1).name} LIKE CONCAT('%', '#searchKeyword#', '%')
 #else
 
 #end
+;

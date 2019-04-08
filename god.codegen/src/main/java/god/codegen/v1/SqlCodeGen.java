@@ -48,38 +48,38 @@ public class SqlCodeGen {
 		excel.setDataModels(vo, model);
 		for (DataModelContext dataModel : model.getDataModels()) {
 			String templateFile = "eGovFrameTemplates.god/sql/insert.vm";
-			String pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/insert " + dataModel.getTable().getTableName()
+			String pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/insert " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate(dataModel, templateFile, pathname);
 
 			templateFile = "eGovFrameTemplates.god/sql/update.vm";
-			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/update " + dataModel.getTable().getTableName()
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/update " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate(dataModel, templateFile, pathname);
 
 			templateFile = "eGovFrameTemplates.god/sql/delete.vm";
-			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/delete " + dataModel.getTable().getTableName()
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/delete " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate(dataModel, templateFile, pathname);
 
 			templateFile = "eGovFrameTemplates.god/sql/select.vm";
-			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/select " + dataModel.getTable().getTableName()
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/select " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate(dataModel, templateFile, pathname);
 
 			templateFile = "eGovFrameTemplates.god/sql/select2.vm";
-			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/select2 " + dataModel.getTable().getTableName()
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/select2 " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate(dataModel, templateFile, pathname);
 
 			templateFile = "eGovFrameTemplates.god/sql/select3.vm";
-			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/select3 " + dataModel.getTable().getTableName()
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/select3 " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate(dataModel, templateFile, pathname);
 		}

@@ -56,14 +56,14 @@ public class GodCrudCodeGen {
 		excel.setDataModels(vo, model);
 		for (DataModelContext dataModel : model.getDataModels()) {
 			String data = SqlInsert.insert(dataModel);
-			String pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/insert " + dataModel.getTable().getTableName()
+			String pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/insert " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate2(dataModel, data, pathname);
 
 			data = SqlUpdate.update(dataModel);
-			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTable().getTableSchema() + "/"
-					+ dataModel.getTable().getTableName() + "/update " + dataModel.getTable().getTableName()
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getTables().getTableSchema() + "/"
+					+ dataModel.getTables().getTableName() + "/update " + dataModel.getTables().getTableName()
 					+ ".sql";
 			generate2(dataModel, data, pathname);
 

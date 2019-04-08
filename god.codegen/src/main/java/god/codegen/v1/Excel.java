@@ -13,7 +13,7 @@ import egovframework.dev.imp.codegen.template.model.Entity;
 import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.fdl.excel.util.EgovExcelUtil;
-import god.codegen.Table;
+import god.codegen.Tables;
 
 public class Excel {
 
@@ -70,11 +70,11 @@ public class Excel {
 			Entity entity = new Entity(c);
 			dataModel.setEntity(entity);
 
-			Table table = new Table(c);
-			table.setTableSchema(b);
-			table.setTableName(c);
-			table.setTableComment(u);
-			dataModel.setTable(table);
+			Tables tables = new Tables(c);
+			tables.setTableSchema(b);
+			tables.setTableName(c);
+			tables.setTableComment(u);
+			dataModel.setTables(tables);
 
 			c(model.getWbColumns(), dataModel);
 
@@ -103,7 +103,7 @@ public class Excel {
 			System.out.println("h: " + h);
 			System.out.println("q: " + q);
 
-			if (b.equals(dataModel.getTable().getTableSchema()) && c.equals(dataModel.getTable().getTableName())) {
+			if (b.equals(dataModel.getTables().getTableSchema()) && c.equals(dataModel.getTables().getTableName())) {
 				Attribute attr = new Attribute(d);
 				attr.setType(h);
 				attr.setJavaType(getJavaType(h));

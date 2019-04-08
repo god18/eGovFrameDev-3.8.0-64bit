@@ -2,9 +2,9 @@ package god.codegen;
 
 import egovframework.dev.imp.codegen.template.model.DbModelElement;
 
-public class Table extends DbModelElement {
+public class Tables extends DbModelElement {
 
-	public Table(String name) {
+	public Tables(String name) {
 		super(name);
 	}
 

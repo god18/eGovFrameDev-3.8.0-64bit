@@ -40,6 +40,10 @@ public class SqlInsert {
 					sb.append("\t1, /* ");
 					sb.append(attribute.getName());
 					sb.append(" */\n");
+				} else if ("datetime".equals(attribute.getType())) {
+					sb.append("\tSYSDATE(), /* ");
+					sb.append(attribute.getName());
+					sb.append(" */\n");
 				} else {
 					sb.append("\t'', /* ");
 					sb.append(attribute.getName());
@@ -48,6 +52,10 @@ public class SqlInsert {
 			} else {
 				if ("bigint".equals(attribute.getType())) {
 					sb.append("\t1 /* ");
+					sb.append(attribute.getName());
+					sb.append(" */\n");
+				} else if ("datetime".equals(attribute.getType())) {
+					sb.append("\tSYSDATE() /* ");
 					sb.append(attribute.getName());
 					sb.append(" */\n");
 				} else {

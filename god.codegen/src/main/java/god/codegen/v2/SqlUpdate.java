@@ -7,6 +7,7 @@ public class SqlUpdate {
 
 	public static String update(DataModelContext model) {
 		StringBuffer sb = new StringBuffer();
+		StringBuffer sb2 = new StringBuffer();
 
 		sb.append("/*\n");
 		sb.append("god\n");
@@ -16,52 +17,27 @@ public class SqlUpdate {
 		sb.append(model.getEntity().getName());
 		sb.append(" SET\n");
 
-		int i = 0;
-		int size = model.getAttributes().size() - 1;
 		for (Attribute attribute : model.getAttributes()) {
-			if (i < size) {
-				if ("bigint".equals(attribute.getType())) {
-					sb.append("\t");
-					sb.append(attribute.getName());
-					sb.append(" = 1");
-					sb.append(",\n");
-				} else if ("datetime".equals(attribute.getType())) {
-					sb.append("\t");
-					sb.append(attribute.getName());
-					sb.append(" = SYSDATE()");
-					sb.append(",\n");
-				} else {
-					sb.append("\t");
-					sb.append(attribute.getName());
-					sb.append(" = ''");
-					sb.append(",\n");
-				}
+			sb2.append("\t");
+			if ("bigint".equals(attribute.getType())) {
+				sb2.append(attribute.getName());
+				sb2.append(" = 1");
+			} else if ("datetime".equals(attribute.getType())) {
+				sb2.append(attribute.getName());
+				sb2.append(" = SYSDATE()");
 			} else {
-				if ("bigint".equals(attribute.getType())) {
-					sb.append("\t");
-					sb.append(attribute.getName());
-					sb.append(" = 1");
-					sb.append("\n");
-				} else if ("datetime".equals(attribute.getType())) {
-					sb.append("\t");
-					sb.append(attribute.getName());
-					sb.append(" = SYSDATE()");
-					sb.append("\n");
-				} else {
-					sb.append("\t");
-					sb.append(attribute.getName());
-					sb.append(" = ''");
-					sb.append("\n");
-				}
+				sb2.append(attribute.getName());
+				sb2.append(" = ''");
 			}
-			i++;
+			sb2.append(",\n");
 		}
 
-		sb.append("WHERE\n");
+		String set = sb2.toString();
+		sb.append(set.substring(0, set.length() - 2));
 
-		// i = 0;
+		sb.append("\nWHERE\n");
+
 		for (Attribute attribute : model.getPrimaryKeys()) {
-			// if (i < size) {
 			if ("bigint".equals(attribute.getType())) {
 				sb.append("\tAND ");
 				sb.append(attribute.getName());
@@ -71,18 +47,6 @@ public class SqlUpdate {
 				sb.append(attribute.getName());
 				sb.append(" = '1'\n");
 			}
-			// } else {
-			// if ("bigint".equals(attribute.getType())) {
-			// sb.append("\tAND ");
-			// sb.append(attribute.getName());
-			// sb.append(" = 1\n");
-			// } else {
-			// sb.append("\tAND ");
-			// sb.append(attribute.getName());
-			// sb.append(" = '1'\n");
-			// }
-			// }
-			// i++;
 		}
 
 		sb.append(";");

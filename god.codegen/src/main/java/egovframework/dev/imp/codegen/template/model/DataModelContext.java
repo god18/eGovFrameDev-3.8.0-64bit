@@ -17,6 +17,8 @@ package egovframework.dev.imp.codegen.template.model;
 
 import java.util.List;
 
+import god.codegen.Table;
+
 /**
  * 
  * 데이터베이스 Context 클래스
@@ -56,7 +58,7 @@ public class DataModelContext {
 
 	private String packageName;
 
-	private GodTable godTable;
+	private Table table;
 
 	/**
 	 * 데이타베이스 제품명
@@ -180,12 +182,12 @@ public class DataModelContext {
 		this.packageName = packageName;
 	}
 
-	public GodTable getGodTable() {
-		return godTable;
+	public Table getTable() {
+		return table;
 	}
 
-	public void setGodTable(GodTable godTable) {
-		this.godTable = godTable;
+	public void setTable(Table table) {
+		this.table = table;
 	}
 
 }

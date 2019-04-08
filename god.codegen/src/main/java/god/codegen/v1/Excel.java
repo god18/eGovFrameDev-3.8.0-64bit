@@ -10,10 +10,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import egovframework.dev.imp.codegen.template.model.Attribute;
 import egovframework.dev.imp.codegen.template.model.DataModelContext;
 import egovframework.dev.imp.codegen.template.model.Entity;
-import egovframework.dev.imp.codegen.template.model.GodTable;
 import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.fdl.excel.util.EgovExcelUtil;
+import god.codegen.Table;
 
 public class Excel {
 
@@ -70,11 +70,11 @@ public class Excel {
 			Entity entity = new Entity(c);
 			dataModel.setEntity(entity);
 
-			GodTable godTable = new GodTable();
-			godTable.setTableSchema(b);
-			godTable.setTableName(c);
-			godTable.setTableComment(u);
-			dataModel.setGodTable(godTable);
+			Table table = new Table(c);
+			table.setTableSchema(b);
+			table.setTableName(c);
+			table.setTableComment(u);
+			dataModel.setTable(table);
 
 			c(model.getWbColumns(), dataModel);
 
@@ -103,8 +103,7 @@ public class Excel {
 			System.out.println("h: " + h);
 			System.out.println("q: " + q);
 
-			if (b.equals(dataModel.getGodTable().getTableSchema())
-					&& c.equals(dataModel.getGodTable().getTableName())) {
+			if (b.equals(dataModel.getTable().getTableSchema()) && c.equals(dataModel.getTable().getTableName())) {
 				Attribute attr = new Attribute(d);
 				attr.setType(h);
 				attr.setJavaType(getJavaType(h));

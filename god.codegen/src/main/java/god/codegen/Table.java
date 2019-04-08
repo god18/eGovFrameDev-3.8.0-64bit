@@ -1,6 +1,12 @@
-package egovframework.dev.imp.codegen.template.model;
+package god.codegen;
 
-public class GodTable {
+import egovframework.dev.imp.codegen.template.model.DbModelElement;
+
+public class Table extends DbModelElement {
+
+	public Table(String name) {
+		super(name);
+	}
 
 	private String tableSchema;
 

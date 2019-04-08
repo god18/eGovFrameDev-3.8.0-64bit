@@ -16,12 +16,12 @@ import god.codegen.v1.CodeGenVO;
 import god.codegen.v1.Excel;
 import operation.CrudCodeGen;
 
-public class GodCrudCodeGen {
+public class CrudCodeGenMain {
 
 	private CrudCodeGen crudCodeGen = new CrudCodeGen();
 
 	public static void main(String[] args) {
-		GodCrudCodeGen main = new GodCrudCodeGen();
+		CrudCodeGenMain main = new CrudCodeGenMain();
 
 		CodeGenVO vo = new CodeGenVO();
 		CodeGenModel model = new CodeGenModel();

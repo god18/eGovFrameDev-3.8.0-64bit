@@ -95,11 +95,13 @@ public class Excel {
 			String c = EgovExcelUtil.getValue(row.getCell(2));
 			String d = EgovExcelUtil.getValue(row.getCell(3));
 			String h = EgovExcelUtil.getValue(row.getCell(7));
+			String q = EgovExcelUtil.getValue(row.getCell(16));
 			System.out.println("a: " + a);
 			System.out.println("b: " + b);
 			System.out.println("c: " + c);
 			System.out.println("d: " + d);
 			System.out.println("h: " + h);
+			System.out.println("q: " + q);
 
 			if (b.equals(dataModel.getGodTable().getTableSchema())
 					&& c.equals(dataModel.getGodTable().getTableName())) {
@@ -107,7 +109,10 @@ public class Excel {
 				attr.setType(h);
 				attr.setJavaType(getJavaType(h));
 				attributes.add(attr);
-				primaryKeys.add(attr);
+
+				if ("PRI".equals(q)) {
+					primaryKeys.add(attr);
+				}
 			}
 		}
 

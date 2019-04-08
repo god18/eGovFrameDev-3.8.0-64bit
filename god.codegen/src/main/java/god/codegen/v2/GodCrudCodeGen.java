@@ -26,16 +26,19 @@ public class GodCrudCodeGen {
 		CodeGenVO vo = new CodeGenVO();
 		CodeGenModel model = new CodeGenModel();
 
-		// vo.setTemplateNameTables(
-		// "C:\\Users\\godsoft\\Google
-		// 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
-		// vo.setTemplateNameColumns(
-		// "C:\\Users\\godsoft\\Google
-		// 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
-		vo.setTemplateNameTables(
-				"D:\\Users\\LeeBaekHaeng\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
-		vo.setTemplateNameColumns(
-				"D:\\Users\\LeeBaekHaeng\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
+		String condition = "a";
+
+		if ("a".equals(condition)) {
+			vo.setTemplateNameTables(
+					"C:\\Users\\godsoft\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
+			vo.setTemplateNameColumns(
+					"C:\\Users\\godsoft\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
+		} else {
+			vo.setTemplateNameTables(
+					"D:\\Users\\LeeBaekHaeng\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-TABLES.xlsx");
+			vo.setTemplateNameColumns(
+					"D:\\Users\\LeeBaekHaeng\\Google 드라이브(godsoft18@gmail.com)\\codegen\\mariadb-10.1.37-winx64-COLUMNS.xlsx");
+		}
 
 		DataModelContext dataModel = new DataModelContext();
 		dataModel.setPackageName("god.com");
@@ -55,6 +58,12 @@ public class GodCrudCodeGen {
 			String data = SqlInsert.insert(dataModel);
 			String pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getGodTable().getTableSchema() + "/"
 					+ dataModel.getGodTable().getTableName() + "/insert " + dataModel.getGodTable().getTableName()
+					+ ".sql";
+			generate2(dataModel, data, pathname);
+
+			data = SqlUpdate.update(dataModel);
+			pathname = SystemUtils.USER_HOME + "/Desktop/god/" + dataModel.getGodTable().getTableSchema() + "/"
+					+ dataModel.getGodTable().getTableName() + "/update " + dataModel.getGodTable().getTableName()
 					+ ".sql";
 			generate2(dataModel, data, pathname);
 

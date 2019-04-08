@@ -17,6 +17,7 @@ package egovframework.dev.imp.codegen.template.model;
 
 import java.util.List;
 
+import god.codegen.Columns;
 import god.codegen.Tables;
 
 /**
@@ -59,6 +60,7 @@ public class DataModelContext {
 	private String packageName;
 
 	private Tables tables;
+	private List<Columns> columnsList;
 
 	/**
 	 * 데이타베이스 제품명
@@ -188,6 +190,14 @@ public class DataModelContext {
 
 	public void setTables(Tables tables) {
 		this.tables = tables;
+	}
+
+	public List<Columns> getColumnsList() {
+		return columnsList;
+	}
+
+	public void setColumnsList(List<Columns> columnsList) {
+		this.columnsList = columnsList;
 	}
 
 }

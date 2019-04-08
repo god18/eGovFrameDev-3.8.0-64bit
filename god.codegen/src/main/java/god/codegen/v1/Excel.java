@@ -13,6 +13,7 @@ import egovframework.dev.imp.codegen.template.model.Entity;
 import egovframework.rte.fdl.excel.EgovExcelService;
 import egovframework.rte.fdl.excel.impl.EgovExcelServiceImpl;
 import egovframework.rte.fdl.excel.util.EgovExcelUtil;
+import god.codegen.Columns;
 import god.codegen.Tables;
 
 public class Excel {
@@ -89,6 +90,8 @@ public class Excel {
 		List<Attribute> attributes = new ArrayList<Attribute>();
 		List<Attribute> primaryKeys = new ArrayList<Attribute>();
 
+		List<Columns> columnsList = new ArrayList<>();
+
 		for (Row row : sheet) {
 			String a = EgovExcelUtil.getValue(row.getCell(0));
 			String b = EgovExcelUtil.getValue(row.getCell(1));
@@ -109,6 +112,9 @@ public class Excel {
 				attr.setJavaType(getJavaType(h));
 				attributes.add(attr);
 
+				Columns columns = new Columns(d);
+				columnsList.add(columns);
+
 				if ("PRI".equals(q)) {
 					primaryKeys.add(attr);
 				}
@@ -117,6 +123,8 @@ public class Excel {
 
 		dataModel.setAttributes(attributes);
 		dataModel.setPrimaryKeys(primaryKeys);
+
+		dataModel.setColumnsList(columnsList);
 	}
 
 	private String getJavaType(String type) {
